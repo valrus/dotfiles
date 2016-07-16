@@ -13,13 +13,16 @@ Xft.lcdfilter: lcddefault
 xterm*selectToClipboard: true
 
 ! rxvt-unicode
-! URxvt.font: -Misc-Fixed-Medium-R-SemiCondensed--12-110-75-75-C-60-ISO10646-1,\
-!             -*-unifont-*-*-*-*-*-*-*-*-*-*-*-*
-! URxvt.boldFont: -Misc-Fixed-Medium-R-SemiCondensed--12-110-75-75-C-60-ISO10646-1
-URxvt.scrollBar: false
+URxvt*font: xft:Deja Vu Sans Mono:pixelsize=15
+URxvt*boldFont: xft:Deja Vu Sans Mono:pixelsize=15:style=bold
+URxvt*scrollBar: false
+URxvt*letterSpace: -2
+URxvt*saveLines: 0
+URxvt*termName: screen-256color
+URxvt*loginShell: true
+URxvt*borderLess: true
 
-URxvt.perl-ext-common: ...,keyboard-select
-URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt*perl-ext-common: 
 
 ! Solarized color scheme for the X Window System
 !
