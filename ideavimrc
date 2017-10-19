@@ -28,7 +28,10 @@ nmap U :action $Redo<CR>
 " ActivateProjectToolWindow                          <M-1>
 " ActivateRunToolWindow                              <M-4>
 " ActivateStructureToolWindow                        <M-7>
+
 " ActivateTerminalToolWindow                         <A-F12>
+nmap <leader>' :action ActivateTerminalToolWindow<CR>
+
 " ActivateTODOToolWindow                             <M-6>
 " ActivateVersionControlToolWindow                   <M-9> <M-S-9>
 " ActiveToolwindowGroup
@@ -311,6 +314,10 @@ nmap <leader>wd :action CloseContent<CR>
 " CreateRunConfiguration
 " CreateWebProject
 " CutCopyPasteGroup
+
+" DashLauncherAction                                 <M-S-D>
+nmap <leader>dd :action DashLauncherAction<CR>
+
 " Database.OpenDbStorageAction                       <M-Down> <F4>
 " Database.Settings
 " DatabaseView.AddActionGroup
@@ -794,7 +801,7 @@ nmap <leader>: :action GotoAction<CR>
 " GotoDeclaration                                    <M-B> button=1 clickCount=1 modifiers=256 button=2 clickCount=1 modifiers=0
 " GoToEditPointGroup
 " GoToErrorGroup
-" nmap <leader>ff :action GotoFile<CR>
+nmap <leader>ff :action GotoFile<CR>
 nmap <leader>pf :action GotoFile<CR>
 " nmap <leader><space> :action GotoFile<CR>
 " GotoImplementation                                 <M-A-B> button=1 clickCount=1 modifiers=768
@@ -1035,7 +1042,10 @@ nnoremap <leader>bh :action PreviousTab<CR>
 " openAssertEqualsDiff                               <M-D>
 " OpenEditorInOppositeTabGroup
 " OpenElementInNewWindow                             <S-CR>
+
+" OpenFile
 " nmap <leader>ff :action OpenFile<CR>
+
 " nmap <leader><space> :action OpenFile<CR>
 " OpenInBrowser
 " OpenInBrowserEditorContextBarGroupAction
@@ -1378,8 +1388,8 @@ nmap <leader>ff :action ShowNavBar<CR>
 " SplitHorizontally
 " SplitVertically
 
-nmap <leader>w- :action SplitHorizontally<CR>
-nmap <leader>w| :action SplitVertically<CR>
+nmap <leader>w- :action SplitHorizontally<CR><C-w>l
+nmap <leader>w| :action SplitVertically<CR><C-w>j
 
 " sql.ChangeDialect
 " sql.ExtractNamedQueryAction
@@ -1514,7 +1524,10 @@ nmap <Leader>ww :action Switcher<CR>
 " UnmarkRoot
 " Unscramble
 " UnselectPreviousOccurrence                         <C-S-G>
+
 " Unsplit
+nnoremap <leader>wx :action Unsplit<CR>
+
 " UnsplitAll
 " Unversioned.Files.Dialog
 " Unwrap                                             <M-S-Del>
