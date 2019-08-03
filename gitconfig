@@ -1,0 +1,16 @@
+[core]
+	editor = vim
+[user]
+	email = imccowan@gmail.com
+	name = Ian McCowan
+[push]
+	default = simple
+[alias]
+	branches = branch -a
+	tags = tag
+	stashes = stash list
+	unstage = reset -q HEAD --
+	discard = checkout --
+	uncommit = reset --mixed HEAD~
+	amend = commit --amend
+	nevermind = !git reset --hard HEAD && git clean -d -f
