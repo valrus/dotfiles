@@ -6,7 +6,7 @@ if [[ -s ${ZDOTDIR:-${HOME}}/.zim/init.zsh ]]; then
   source ${ZDOTDIR:-${HOME}}/.zim/init.zsh
 fi
 
-### Improve vi mode
+## #Improve vi mode
 # http://stratus3d.com/blog/2017/10/26/better-vi-mode-in-zshell/
 
 # Set vi mode in the first place
@@ -38,25 +38,28 @@ export EDITOR='vim -u none'
 export KEYTIMEOUT=1
 
 # Mode indicator in prompt
-function zle-keymap-select() {
-  zle reset-prompt
-  zle -R
-}
+# function zle-keymap-select() {
+#   zle reset-prompt
+#   zle -R
+# }
 
-zle -N zle-keymap-select
+# zle -N zle-keymap-select
 
-function vi_mode_prompt_info() {
-  echo "${${KEYMAP/vicmd/[% NORMAL]%}/(main|viins)/[% INSERT]%}"
-}
+# function vi_mode_prompt_info() {
+#   echo "${${KEYMAP/vicmd/[% NORMAL]%}/(main|viins)/[% INSERT]%}"
+# }
 
 # define right prompt, regardless of whether the theme defined it
-RPS1='$(vi_mode_prompt_info)'
-RPS2=$RPS1
+# RPS1='$(vi_mode_prompt_info)'
+# RPS2=$RPS1
 
 # Incorporate local settings
 source ~/.zshrc.local
+fpath=(~/.zsh/functions $fpath)
+
+eval "$(pyenv init - --no-rehash)"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(direnv hook zsh)"
