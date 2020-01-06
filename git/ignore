@@ -1,0 +1,7 @@
+# Ruby version management detritus
+Gemfile.local
+Gemfile.local.lock
+.rbenv-gemsets
+
+# Emacs per-project settings
+.dir-locals.el
