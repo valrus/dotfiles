@@ -130,6 +130,22 @@
 ;; Windows
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(local window-thirds
+       [{:key "asd"
+         :title "Thirds"}
+        {:key :a
+         :action (fn [] (hs.grid.set (hs.window.focusedWindow) "0,0 1x2"))}
+        {:key :s
+         :action (fn [] (hs.grid.set (hs.window.focusedWindow) "1,0 1x2"))}
+        {:key :d
+         :action (fn [] (hs.grid.set (hs.window.focusedWindow) "2,0 1x2"))}
+        {:mods [:shift]
+         :key :a
+         :action (fn [] (hs.grid.set (hs.window.focusedWindow) "0,0 2x2"))}
+        {:mods [:shift]
+         :key :d
+         :action (fn [] (hs.grid.set (hs.window.focusedWindow) "2,0 1x2"))}])
+
 (local window-jumps
        [{:mods [:cmd]
          :key "hjkl"
@@ -149,22 +165,6 @@
         {:mods [:cmd]
          :key :l
          :action "windows:jump-window-right"
-         :repeatable true}])
-
-(local window-halves
-       [{:key "hjkl"
-         :title "Halves"}
-        {:key :h
-         :action "windows:resize-half-left"
-         :repeatable true}
-        {:key :j
-         :action "windows:resize-half-bottom"
-         :repeatable true}
-        {:key :k
-         :action "windows:resize-half-top"
-         :repeatable true}
-        {:key :l
-         :action "windows:resize-half-right"
          :repeatable true}])
 
 (local window-increments
@@ -236,8 +236,8 @@
          {:key :o
           :title "Last Window"
           :action "windows:jump-to-last-window"}]
+        window-thirds
         window-jumps
-        window-halves
         window-increments
         window-resize
         window-move-screens
@@ -275,6 +275,9 @@
         {:key :s
          :title "Slack"
          :action (activator "Slack")}
+        {:key :m
+         :title "Mail"
+         :action (activator "Postbox")}
          ])
 
 (local media-bindings
