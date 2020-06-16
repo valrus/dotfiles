@@ -152,66 +152,19 @@
          :action (fn [] (hs.grid.set (hs.window.focusedWindow) "1,0 2x2"))}])
 
 (local window-jumps
-       [{:mods [:cmd]
-         :key "hjkl"
+       [{:key "hjkl"
          :title "Jump"}
-        {:mods [:cmd]
-         :key :h
+        {:key :h
          :action "windows:jump-window-left"
          :repeatable true}
-        {:mods [:cmd]
-         :key :j
+        { :key :j
          :action "windows:jump-window-above"
          :repeatable true}
-        {:mods [:cmd]
-         :key :k
+        {:key :k
          :action "windows:jump-window-below"
          :repeatable true}
-        {:mods [:cmd]
-         :key :l
+        {:key :l
          :action "windows:jump-window-right"
-         :repeatable true}])
-
-(local window-increments
-       [{:mods [:alt]
-         :key "hjkl"
-         :title "Increments"}
-        {:mods [:alt]
-         :key :h
-         :action "windows:resize-inc-left"
-         :repeatable true}
-        {:mods [:alt]
-         :key :j
-         :action "windows:resize-inc-bottom"
-         :repeatable true}
-        {:mods [:alt]
-         :key :k
-         :action "windows:resize-inc-top"
-         :repeatable true}
-        {:mods [:alt]
-         :key :l
-         :action "windows:resize-inc-right"
-         :repeatable true}])
-
-(local window-resize
-       [{:mods [:shift]
-         :key "hjkl"
-         :title "Resize"}
-        {:mods [:shift]
-         :key :h
-         :action "windows:resize-left"
-         :repeatable true}
-        {:mods [:shift]
-         :key :j
-         :action "windows:resize-down"
-         :repeatable true}
-        {:mods [:shift]
-         :key :k
-         :action "windows:resize-up"
-         :repeatable true}
-        {:mods [:shift]
-         :key :l
-         :action "windows:resize-right"
          :repeatable true}])
 
 (local window-move-screens
@@ -244,8 +197,6 @@
         window-thirds
         window-two-thirds
         window-jumps
-        window-increments
-        window-resize
         window-move-screens
         [{:key :m
           :title "Maximize"
