@@ -138,13 +138,18 @@
         {:key :s
          :action (fn [] (hs.grid.set (hs.window.focusedWindow) "1,0 1x2"))}
         {:key :d
-         :action (fn [] (hs.grid.set (hs.window.focusedWindow) "2,0 1x2"))}
+         :action (fn [] (hs.grid.set (hs.window.focusedWindow) "2,0 1x2"))}])
+
+(local window-two-thirds
+       [{:mods [:shift]
+         :key "ad"
+         :title "Two-thirds"}
         {:mods [:shift]
          :key :a
          :action (fn [] (hs.grid.set (hs.window.focusedWindow) "0,0 2x2"))}
         {:mods [:shift]
          :key :d
-         :action (fn [] (hs.grid.set (hs.window.focusedWindow) "2,0 1x2"))}])
+         :action (fn [] (hs.grid.set (hs.window.focusedWindow) "1,0 2x2"))}])
 
 (local window-jumps
        [{:mods [:cmd]
@@ -237,6 +242,7 @@
           :title "Last Window"
           :action "windows:jump-to-last-window"}]
         window-thirds
+        window-two-thirds
         window-jumps
         window-increments
         window-resize
