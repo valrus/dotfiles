@@ -21,56 +21,27 @@
         :logf logf} (require :lib.functional))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; WARNING
-;; Make sure you are customizing ~/.spacehammer/config.fnl and not
-;; ~/.hammerspoon/config.fnl
-;; Otherwise you will lose your customizations on upstream changes.
-;; A copy of this file should already exist in your ~/.spacehammer directory.
+;; SpoonInstall setup
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(local install (hs.loadSpoon "SpoonInstall"))
+(set install.use_syncinstall true)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Table of Contents
+;; URLDispatcher
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; [x] w - windows
-;; [x] |-- w - Last window
-;; [x] |-- cmd + hjkl - jumping
-;; [x] |-- hjkl - halves
-;; [x] |-- alt + hjkl - increments
-;; [x] |-- shift + hjkl - resize
-;; [x] |-- n, p - next, previous screen
-;; [x] |-- shift + n, p - up, down screen
-;; [x] |-- g - grid
-;; [x] |-- m - maximize
-;; [x] |-- c - center
-;; [x] |-- u - undo
-;;
-;; [x] a - apps
-;; [x] |-- e - emacs
-;; [x] |-- g - chrome
-;; [x] |-- f - firefox
-;; [x] |-- i - iTerm
-;; [x] |-- s - Slack
-;;
-;; [x] j - jump
-;;
-;; [x] m - media
-;; [x] |-- h - previous track
-;; [x] |-- l - next track
-;; [x] |-- k - volume up
-;; [x] |-- j - volume down
-;; [x] |-- s - play\pause
-;; [x] |-- a - launch player
-;;
-;; [x] x - emacs
-;; [x] |-- c - capture
-;; [x] |-- z - note
-;; [x] |-- f - fullscreen
-;; [x] |-- v - split
-;;
-;; [x] alt-n - next-app
-;; [x] alt-p - prev-app
+(local default-browser "org.mozilla.firefoxdeveloperedition")
+(local jira-app "org.epichrome.app.Jira")
+
+(install:andUse
+ "URLDispatcher"
+ {:config {:url_patterns
+           {"https?://issue.work.com" jira-app
+            "https?://jira.work.com" jira-app
+            "msteams:" "com.microsoft.teams"}
+           :default_handler default-browser}
+  :start true})
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
