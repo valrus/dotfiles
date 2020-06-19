@@ -37,9 +37,10 @@
 (install:andUse
  "URLDispatcher"
  {:config {:url_patterns
-           {"https?://issue.work.com" jira-app
-            "https?://jira.work.com" jira-app
-            "msteams:" "com.microsoft.teams"}
+           [[ "https?://issue.work.com" jira-app ]
+            [ "https?://jira.work.com" jira-app ]
+            [ "https?://meet.google.com" "com.google.Chrome" ]
+            [ "msteams:" "com.microsoft.teams" ]]
            :default_handler default-browser}
   :start true})
 
