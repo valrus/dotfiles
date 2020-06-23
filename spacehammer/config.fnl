@@ -55,7 +55,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (fn activator
-  [app-name]
+  [app-name ?then-fn]
   "
   A higher order function to activate a target app. It's useful for quickly
   binding a modal menu action or hotkey action to launch or focus on an app.
@@ -67,7 +67,8 @@
   (launch-emacs)
   "
   (fn activate []
-    (windows.activate-app app-name)))
+    (windows.activate-app app-name)
+    (when ?then-fn (?then-fn))))
 
 (fn toggle-console
   []
@@ -84,9 +85,6 @@
 ;; General
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; If you would like to customize this we recommend copying this file to
-;; ~/.hammerspoon/private/config.fnl. That will be used in place of the default
-;; and will not be overwritten by upstream changes when spacehammer is updated.
 (local return
        {:key :delete
         :title "Back"
@@ -211,6 +209,13 @@
 
 (local media-bindings
        [return
+        {:key :space
+         :title "Find Music"
+         :action
+         (activator
+          "Alfred 4"
+          (fn [] (hs.eventtap.keyStrokes "mpd ")))
+         }
         {:key :s
          :title "Play or Pause"
          :action "multimedia:play-or-pause"}
