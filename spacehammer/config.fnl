@@ -15,7 +15,6 @@
 (local windows (require :windows))
 (local emacs (require :emacs))
 (local slack (require :slack))
-(local vim (require :vim))
 
 (local {:concat concat
         :logf logf} (require :lib.functional))
@@ -44,6 +43,14 @@
            :default_handler default-browser}
   :start true})
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(local browser-app-name "Firefox Developer Edition")
+(local mail-app-name "Postbox")
+(local editor-app-name "Emacs")
+(local terminal-app-name "iTerm2")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Initialize
@@ -235,20 +242,8 @@
          :repeatable true}
         ])
 
-(local emacs-bindings
-       [return
-        {:key :c
-         :title "Capture"
-         :action (fn [] (emacs.capture))}
-        {:key :z
-         :title "Note"
-         :action (fn [] (emacs.note))}
-        {:key :v
-         :title "Split"
-         :action "emacs:vertical-split-with-emacs"}
-        {:key :f
-         :title "Full Screen"
-         :action "emacs:full-screen"}])
+(local current-app-bindings
+       [return {}])
 
 (local hammerspoon-bindings
        [return
@@ -279,9 +274,6 @@
         {:key   :m
          :title "Media"
          :items media-bindings}
-        {:key   :x
-         :title "Emacs"
-         :items emacs-bindings}
         {:key   :h
          :title "Hammerspoon"
          :items hammerspoon-bindings}
@@ -297,13 +289,21 @@
         {:mods hyper
          :key :h
          :action "apps:prev-app"}
-        {:mods [:cmd :ctrl]
+        {:mods hyper
          :key :o
          :action "emacs:edit-with-emacs"}])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; App Specific Config
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(fn app-specific-items
+       [this-app-items]
+       (concat
+        menu-items
+        [{:key ","
+          :title "App-specific"
+          :items this-app-items}]))
 
 (local browser-keys
        [{:mods [:cmd :shift]
@@ -319,26 +319,22 @@
          :repeat true}])
 
 (local browser-items
-       (concat
-        menu-items
         [{:key "'"
           :title "Edit with Emacs"
-          :action "emacs:edit-with-emacs"}]))
+          :action "emacs:edit-with-emacs"}])
 
 (local chrome-config
        {:key "Google Chrome"
         :keys browser-keys
-        :items browser-items})
+        :items (app-specific-items browser-items)})
 
 (local firefox-config
-       {:key "Firefox"
+       {:key "Firefox Developer Edition"
         :keys browser-keys
-        :items browser-items})
+        :items (app-specific-items browser-items)})
 
 (local emacs-config
        {:key "Emacs"
-        :activate (fn [] (vim.disable))
-        :deactivate (fn [] (vim.enable))
         :launch "emacs:maximize"
         :items []
         :keys []})
@@ -357,6 +353,7 @@
 
 (local slack-config
        {:key "Slack"
+        :items []
         :keys [{:mods [:cmd]
                 :key  :g
                 :action "slack:scroll-to-bottom"}
@@ -403,12 +400,40 @@
                 :action "slack:up"
                 :repeat true}]})
 
+(local hammerspoon-config
+       {:key "Hammerspoon"
+        :items (concat
+                menu-items
+                [{:key :r
+                  :title "Reload Console"
+                  :action hs.reload}
+                 {:key :c
+                  :title "Clear Console"
+                  :action hs.console.clearConsole}])
+        :keys []})
+
+(local terminal-items
+       [{:key :t
+         :title "Next tab"
+         :action (fn [] (hs.eventtap.keyStroke [:⌘ :⇧] "]"))}
+        {:key :t
+         :mods [:shift]
+         :title "Previous tab"
+         :action (fn [] (hs.eventtap.keyStroke [:⌘ :⇧] "["))}
+        ])
+
+(local terminal-config
+       {:key terminal-app-name
+        :items (app-specific-items terminal-items)
+        :keys []})
+
 (local apps
        [chrome-config
         firefox-config
         emacs-config
         hammerspoon-config
-        slack-config])
+        slack-config
+        terminal-config])
 
 (local config
        {:title "Main Menu"
