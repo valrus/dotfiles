@@ -103,6 +103,19 @@
 (local meh
        [:alt :shift :ctrl])
 
+(local tab-navigation-items
+       [{:key :n
+         :title "Next tab"
+         :action (fn [] (hs.eventtap.keyStroke [:⌘ :⇧] "]"))}
+        {:key :p
+         :title "Previous tab"
+         :action (fn [] (hs.eventtap.keyStroke [:⌘ :⇧] "["))}])
+
+(local tabs-items
+       [{:key :t
+         :title "Tabs"
+         :items tab-navigation-items}])
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Windows
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -298,9 +311,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (fn app-specific-items
-       [this-app-items]
+  [top-level-items this-app-items]
        (concat
         menu-items
+        top-level-items
         [{:key ","
           :title "App-specific"
           :items this-app-items}]))
@@ -326,12 +340,12 @@
 (local chrome-config
        {:key "Google Chrome"
         :keys browser-keys
-        :items (app-specific-items browser-items)})
+        :items (app-specific-items tabs-items browser-items)})
 
 (local firefox-config
        {:key "Firefox Developer Edition"
         :keys browser-keys
-        :items (app-specific-items browser-items)})
+        :items (app-specific-items tabs-items browser-items)})
 
 (local emacs-config
        {:key "Emacs"
@@ -412,19 +426,11 @@
                   :action hs.console.clearConsole}])
         :keys []})
 
-(local terminal-items
-       [{:key :t
-         :title "Next tab"
-         :action (fn [] (hs.eventtap.keyStroke [:⌘ :⇧] "]"))}
-        {:key :t
-         :mods [:shift]
-         :title "Previous tab"
-         :action (fn [] (hs.eventtap.keyStroke [:⌘ :⇧] "["))}
-        ])
+(local terminal-items [])
 
 (local terminal-config
        {:key terminal-app-name
-        :items (app-specific-items terminal-items)
+        :items (app-specific-items tabs-items terminal-items)
         :keys []})
 
 (local apps
