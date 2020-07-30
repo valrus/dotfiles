@@ -209,7 +209,7 @@
        [return
         {:key :e
          :title "Editor"
-         :action (activator "Emacs")}
+         :action (activator "GCCEmacs")}
         ;; {:key :g
         ;;  :title "Chrome"
         ;;  :action (activator "Google Chrome")}
