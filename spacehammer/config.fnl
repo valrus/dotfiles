@@ -225,6 +225,9 @@
         {:key :m
          :title "Mail"
          :action (activator "Postbox")}
+        {:key :d
+         :title "Docs"
+         :action (activator "Dash")}
          ])
 
 (local media-bindings
