@@ -338,7 +338,11 @@
 (local browser-items
         [{:key "'"
           :title "Edit with Emacs"
-          :action "emacs:edit-with-emacs"}])
+          :action "emacs:edit-with-emacs"}
+         {:key "d"
+          :title "Developer Tools"
+          :action (fn [] (hs.eventtap.keyStroke [:⌘ :⌥] "i"))}
+         ])
 
 (local chrome-config
        {:key "Google Chrome"
