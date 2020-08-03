@@ -266,6 +266,9 @@
         {:key :c
          :title "Console"
          :action toggle-console}
+        {:key :r
+         :title "Reload config"
+         :action hs.reload}
         ])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
