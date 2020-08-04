@@ -15,6 +15,7 @@
 (local windows (require :windows))
 (local emacs (require :emacs))
 (local slack (require :slack))
+(local discord (require :discord))
 
 (local {:concat concat
         :logf logf} (require :lib.functional))
@@ -228,6 +229,9 @@
         {:key :d
          :title "Docs"
          :action (activator "Dash")}
+        {:key :c
+         :title "Chat"
+         :action (activator "Discord")}
          ])
 
 (local media-bindings
@@ -357,6 +361,11 @@
         :keys browser-keys
         :items (app-specific-items tabs-items browser-items)})
 
+(local discord-config
+       {:key "Discord"
+        :keys []
+        :items (app-specific-items (discord.navigation) (discord.items))})
+
 (local emacs-config
        {:key "Emacs"
         :launch "emacs:maximize"
@@ -445,6 +454,7 @@
 
 (local apps
        [chrome-config
+        discord-config
         firefox-config
         emacs-config
         hammerspoon-config
