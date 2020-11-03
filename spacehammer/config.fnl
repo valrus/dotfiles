@@ -210,7 +210,7 @@
        [return
         {:key :e
          :title "Editor"
-         :action (activator "GCCEmacs")}
+         :action (activator "Emacs")}
         ;; {:key :g
         ;;  :title "Chrome"
         ;;  :action (activator "Google Chrome")}
