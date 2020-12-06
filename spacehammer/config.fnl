@@ -147,16 +147,16 @@
          :title "Jump"}
         {:key :h
          :action "windows:jump-window-left"
-         :repeatable true}
+         :repeatable false}
         { :key :j
          :action "windows:jump-window-above"
-         :repeatable true}
+         :repeatable false}
         {:key :k
          :action "windows:jump-window-below"
-         :repeatable true}
+         :repeatable false}
         {:key :l
          :action "windows:jump-window-right"
-         :repeatable true}])
+         :repeatable false}])
 
 (local window-move-screens
        [{:key "n, p"
