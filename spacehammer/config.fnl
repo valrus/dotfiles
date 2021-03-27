@@ -234,6 +234,12 @@
          :action (activator "Discord")}
          ])
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Media Menu
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(local mpc-command "MPD_HOST=$HOME/.mpd/mpd.socket /usr/local/bin/mpc")
+
 (local media-bindings
        [return
         {:key :space
@@ -245,20 +251,20 @@
          }
         {:key :s
          :title "Play or Pause"
-         :action "multimedia:play-or-pause"}
+         :action (fn [] (os.execute (.. mpc-command " toggle")))}
         {:key :h
          :title "Prev Track"
-         :action "multimedia:prev-track"}
+         :action (fn [] (os.execute (.. mpc-command " prev")))}
         {:key :l
          :title "Next Track"
-         :action "multimedia:next-track"}
+         :action (fn [] (os.execute (.. mpc-command " next")))}
         {:key :j
          :title "Volume Down"
-         :action "multimedia:volume-down"
+         :action (fn [] (os.execute (.. mpc-command " volume -10")))
          :repeatable true}
         {:key :k
          :title "Volume Up"
-         :action "multimedia:volume-up"
+         :action (fn [] (os.execute (.. mpc-command " volume +10")))
          :repeatable true}
         ])
 
