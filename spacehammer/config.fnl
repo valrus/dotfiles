@@ -40,6 +40,7 @@
            [[ "https?://issue.work.com" jira-app ]
             [ "https?://jira.work.com" jira-app ]
             [ "https?://meet.google.com" "com.google.Chrome" ]
+            [ "https?://meet.jit.si" "com.google.Chrome" ]
             [ "msteams:" "com.microsoft.teams" ]]
            :default_handler default-browser}
   :start true})
@@ -250,6 +251,13 @@
           (fn [] (hs.eventtap.keyStrokes "mpd ")))
          }
         {:key :s
+         :title "Status"
+         :action
+         (activator
+          "Alfred 4"
+          (fn [] (hs.eventtap.keyStrokes "mpdstatus")))
+         }
+        {:key :p
          :title "Play or Pause"
          :action (fn [] (os.execute (.. mpc-command " toggle")))}
         {:key :h
