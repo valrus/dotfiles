@@ -37,11 +37,12 @@
 (install:andUse
  "URLDispatcher"
  {:config {:url_patterns
-           [[ "https?://issue.work.com" jira-app ]
-            [ "https?://jira.work.com" jira-app ]
-            [ "https?://meet.google.com" "com.google.Chrome" ]
-            [ "https?://meet.jit.si" "com.google.Chrome" ]
-            [ "msteams:" "com.microsoft.teams" ]]
+           [[ "https?://meet.google.com" "com.google.Chrome" ]
+            [ "https?://stream.meet.google.com" "com.google.Chrome" ]
+            [ "https?://drive.google.com" "com.google.Chrome" ]
+            [ "https?://docs.google.com" "com.google.Chrome" ]
+            [ "https?://gather.town" "com.google.Chrome" ]
+            [ "https?://meet.jit.si" "com.google.Chrome" ]]
            :default_handler default-browser}
   :start true})
 
@@ -236,6 +237,20 @@
          ])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; System Menu
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(local system-bindings
+       [return
+        {:key :d
+         :title "Sleep display"
+         :action (fn [] (hs.caffeinate.lockScreen))}
+        {:key :s
+         :title "Sleep"
+         :action (fn [] (hs.caffeinate.systemSleep))}
+         ])
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Media Menu
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -279,6 +294,10 @@
 (local current-app-bindings
        [return {}])
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Hammerspoon Menu
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (local hammerspoon-bindings
        [return
         {:key :c
@@ -305,6 +324,9 @@
         {:key   :a
          :title "Apps"
          :items app-bindings}
+        {:key :s
+         :title "System"
+         :items system-bindings}
         {:key    :j
          :title  "Jump"
          :action "windows:jump"}
@@ -343,7 +365,7 @@
           :title "App-specific"
           :items this-app-items}]))
 
-(local browser-keys
+(local chrome-keys
        [{:mods [:cmd :shift]
          :key :l
          :action "chrome:open-location"}
@@ -367,12 +389,12 @@
 
 (local chrome-config
        {:key "Google Chrome"
-        :keys browser-keys
+        :keys chrome-keys
         :items (app-specific-items tabs-items browser-items)})
 
 (local firefox-config
        {:key "Firefox Developer Edition"
-        :keys browser-keys
+        :keys []
         :items (app-specific-items tabs-items browser-items)})
 
 (local discord-config
