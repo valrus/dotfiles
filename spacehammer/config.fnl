@@ -41,6 +41,7 @@
             [ "https?://stream.meet.google.com" "com.google.Chrome" ]
             [ "https?://drive.google.com" "com.google.Chrome" ]
             [ "https?://docs.google.com" "com.google.Chrome" ]
+            [ "https?://accounts.google.com" "com.google.Chrome" ]
             [ "https?://gather.town" "com.google.Chrome" ]
             [ "https?://meet.jit.si" "com.google.Chrome" ]]
            :default_handler default-browser}
@@ -262,7 +263,7 @@
          :title "Find Music"
          :action
          (activator
-          "Alfred 4"
+          "Raycast"
           (fn [] (hs.eventtap.keyStrokes "mpd ")))
          }
         {:key :s
@@ -314,8 +315,8 @@
 
 (local menu-items
        [{:key    :space
-         :title  "Alfred"
-         :action (activator "Alfred 4")}
+         :title  "Raycast"
+         :action (activator "Raycast")}
         {:key   :w
          :title "Window"
          :enter "windows:enter-window-menu"
