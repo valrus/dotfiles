@@ -342,7 +342,7 @@
 (local common-keys
        [{:mods [:cmd]
          :key :space
-         :action "lib.new-modal:activate-modal"}
+         :action "lib.modal:activate-modal"}
         {:mods hyper
          :key :l
          :action "apps:next-app"}
