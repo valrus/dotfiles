@@ -55,6 +55,7 @@
 (local mail-app-name "Postbox")
 (local editor-app-name "Emacs")
 (local terminal-app-name "iTerm2")
+(local launcher-app-name "Alfred 5")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Initialize
@@ -263,14 +264,14 @@
          :title "Find Music"
          :action
          (activator
-          "Raycast"
+          launcher-app-name
           (fn [] (hs.eventtap.keyStrokes "mpd ")))
          }
         {:key :s
          :title "Status"
          :action
          (activator
-          "Alfred 4"
+          launcher-app-name
           (fn [] (hs.eventtap.keyStrokes "mpdstatus")))
          }
         {:key :p
@@ -315,8 +316,8 @@
 
 (local menu-items
        [{:key    :space
-         :title  "Raycast"
-         :action (activator "Raycast")}
+         :title  "Launcher"
+         :action (activator launcher-app-name)}
         {:key   :w
          :title "Window"
          :enter "windows:enter-window-menu"
