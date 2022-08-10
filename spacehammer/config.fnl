@@ -214,16 +214,16 @@
        [return
         {:key :e
          :title "Editor"
-         :action (activator "Emacs")}
+         :action (activator editor-app-name)}
         ;; {:key :g
         ;;  :title "Chrome"
         ;;  :action (activator "Google Chrome")}
         {:key :w
          :title "Web browser"
-         :action (activator "Firefox")}
+         :action (activator browser-app-name)}
         {:key :t
          :title "Terminal"
-         :action (activator "iTerm2")}
+         :action (activator terminal-app-name)}
         {:key :s
          :title "Slack"
          :action (activator "Slack")}
