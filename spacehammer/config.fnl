@@ -274,6 +274,13 @@
           launcher-app-name
           (fn [] (hs.eventtap.keyStrokes "mpdstatus")))
          }
+        {:key :t
+         :title "Playtime Search"
+         :action
+         (activator
+          launcher-app-name
+          (fn [] (hs.eventtap.keyStrokes "mpdtime ")))
+         }
         {:key :p
          :title "Play or Pause"
          :action (fn [] (os.execute (.. mpc-command " toggle")))}
