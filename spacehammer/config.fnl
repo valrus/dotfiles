@@ -215,9 +215,9 @@
         {:key :e
          :title "Editor"
          :action (activator editor-app-name)}
-        ;; {:key :g
-        ;;  :title "Chrome"
-        ;;  :action (activator "Google Chrome")}
+        {:key :g
+         :title "Chrome"
+         :action (activator "Google Chrome")}
         {:key :w
          :title "Web browser"
          :action (activator browser-app-name)}
