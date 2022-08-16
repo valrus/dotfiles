@@ -342,6 +342,10 @@
         {:key   :m
          :title "Media"
          :items media-bindings}
+        {:mods  [:shift]
+         :key   ";"
+         :title "Paletro"
+         :action (fn [] (hs.eventtap.keyStroke [:⌘] :F16))}
         {:key   :h
          :title "Hammerspoon"
          :items hammerspoon-bindings}
