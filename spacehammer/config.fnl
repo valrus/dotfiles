@@ -92,6 +92,8 @@
           (hs.closeConsole)
           (hs.openConsole)))
 
+(fn reset-hs []
+  (io.popen "killall Hammerspoon && open -a Hammerspoon &"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; General
@@ -315,6 +317,9 @@
         {:key :r
          :title "Reload config"
          :action hs.reload}
+        {:key :q
+         :title "Restart Hammerspoon"
+         :action reset-hs}
         ])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -352,7 +357,7 @@
         ])
 
 (local common-keys
-       [{:mods [:cmd]
+       [{:mods [:shift]
          :key :space
          :action "lib.modal:activate-modal"}
         {:mods hyper
