@@ -165,3 +165,6 @@ autocmd DocStart ^http(s?)://www.amazon.co.uk js tri.excmds.urlmodify("-t", "www
 
 " For syntax highlighting see https://github.com/tridactyl/vim-tridactyl
 " vim: set filetype=tridactyl
+
+" The "escape hatch" on <C-,> closes sidebars, which isn't great. Disable that
+set escapehatchsidebarhack false

@@ -57,10 +57,15 @@
 (local terminal-app-name "iTerm2")
 (local launcher-app-name "Alfred 5")
 
+(hs.grid.setGrid "3x2" "1080x1920")
+(hs.grid.setGrid "3x2" "27MU67")
+(set hs.grid.HINTS [["f" "s" "c"] ["p" "t" "d"]])
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Initialize
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(hs.console.clearConsole)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Actions
@@ -198,9 +203,9 @@
         [{:key :m
           :title "Maximize"
           :action "windows:maximize-window-frame"}
-         {:key :c
-          :title "Center"
-          :action "windows:center-window-frame"}
+         ;; {:key :c
+         ;;  :title "Center"
+         ;;  :action "windows:center-window-frame"}
          {:key :g
           :title "Grid"
           :action "windows:show-grid"}
@@ -262,7 +267,7 @@
 
 (local media-bindings
        [return
-        {:key :space
+        {:key :return
          :title "Find Music"
          :action
          (activator
@@ -317,9 +322,6 @@
         {:key :r
          :title "Reload config"
          :action hs.reload}
-        {:key :q
-         :title "Restart Hammerspoon"
-         :action reset-hs}
         ])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -327,7 +329,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (local menu-items
-       [{:key    :space
+       [{:key    :return
          :title  "Launcher"
          :action (activator launcher-app-name)}
         {:key   :w
@@ -357,8 +359,8 @@
         ])
 
 (local common-keys
-       [{:mods [:shift]
-         :key :space
+       [{:mods [:cmd]
+         :key :return
          :action "lib.modal:activate-modal"}
         {:mods hyper
          :key :l
