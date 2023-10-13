@@ -1,0 +1,47 @@
+/*
+ * Do not remove the @namespace line -- it's required for correct functioning
+ * set default namespace to XUL
+ */
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* Replace tab favicons with close button on hover
+ * https://gist.github.com/henrik242/3abf4c52ebf81add5cfe38acf97c2053
+ */
+.tabbrowser-tab .tab-throbber,
+.tabbrowser-tab .tab-icon-image,
+.tabbrowser-tab .tab-sharing-icon-overlay,
+.tabbrowser-tab .tab-icon-overlay,
+.tabbrowser-tab .tab-label-container,
+.tabbrowser-tab .tab-icon-sound {
+  order: 2 !important;
+}
+
+.tabbrowser-tab .tab-label-container {
+  margin-left: 2px;
+}
+
+.tabbrowser-tab .tab-icon-image {
+  margin-left: 3px;
+}
+
+.tabbrowser-tab .tab-close-button {
+  margin-left: -5px !important;
+  margin-right: 2.5px !important;
+}
+
+.tabbrowser-tab:not([pinned]):hover .tab-close-button {
+  /* display: -moz-box !important; */
+  display: inline-flex !important;
+}
+
+.tabbrowser-tab:not([pinned]):hover .tab-icon-stack,
+.tabbrowser-tab:not([pinned]):hover .tab-throbber,
+.tab-close-button {
+  display: none;
+}
+
+/* show keyword field in bookmark panel */
+#editBMPanel_keywordRow {visibility:visible !important;}
+
+/* disable top tabs if using a vertical tabs extension */
+/* #TabsToolbar { visibility: collapse !important; } */
