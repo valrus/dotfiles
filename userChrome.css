@@ -41,7 +41,23 @@
 }
 
 /* show keyword field in bookmark panel */
-#editBMPanel_keywordRow {visibility:visible !important;}
+#editBMPanel_keywordRow {
+  visibility: visible !important;
+}
 
 /* disable top tabs if using a vertical tabs extension */
 /* #TabsToolbar { visibility: collapse !important; } */
+
+/* https://support.mozilla.org/en-US/questions/1394300 */
+/* Hide Tab bar with only one Tab */
+#tabbrowser-tabs .tabbrowser-tab:only-of-type,
+#tabbrowser-tabs .tabbrowser-tab:only-of-type + #tabbrowser-arrowscrollbox-periphery {
+  display: none !important;
+}
+#tabbrowser-tabs, #tabbrowser-arrowscrollbox {
+  min-height: 0 !important;
+}
+/* #TabsToolbar:not(:hover) */
+#alltabs-button {
+  display: none !important;
+}
