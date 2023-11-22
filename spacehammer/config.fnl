@@ -52,9 +52,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (local browser-app-name "Firefox Developer Edition")
-(local mail-app-name "Postbox")
+(local mail-app-name "Mail")
 (local editor-app-name "Emacs")
-(local terminal-app-name "iTerm2")
+(local terminal-app-name "WezTerm")
 (local launcher-app-name "Alfred 5")
 
 (hs.grid.setGrid "3x2" "1080x1920")

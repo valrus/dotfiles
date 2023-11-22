@@ -6,7 +6,7 @@
 	url = https://github.com/tmux-plugins/tpm.git
 [submodule "zsh/pure"]
 	path = zsh/pure
-	url = git@github.com:sindresorhus/pure.git
+	url = git@github-personal:sindresorhus/pure.git
 [submodule "hammerspoon"]
 	path = hammerspoon
-	url = git@github.com:valrus/spacehammer.git
+	url = git@github-personal:valrus/spacehammer.git
