@@ -43,6 +43,7 @@
             [ "https?://docs.google.com" "com.google.Chrome" ]
             [ "https?://accounts.google.com" "com.google.Chrome" ]
             [ "https?://gather.town" "com.google.Chrome" ]
+            [ "https?://(.*)talkdesk.com" "com.google.Chrome" ]
             [ "https?://meet.jit.si" "com.google.Chrome" ]]
            :default_handler default-browser}
   :start true})
