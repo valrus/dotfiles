@@ -155,10 +155,14 @@ command translate js let googleTranslateCallback = document.createElement('scrip
 " New reddit is bad
 autocmd DocStart ^http(s?)://www.reddit.com js tri.excmds.urlmodify("-t", "www", "old")
 " Twitter is bad
-autocmd DocStart ^http(s?)://(www.)?twitter.com js tri.excmds.urlmodify("-t", "twitter.com", "unofficialbird.com")
+" autocmd DocStart ^http(s?)://(www.)?twitter.com js tri.excmds.urlmodify("-t", "twitter.com", "nitter.net")
 " Mosquito nets won't make themselves
 " but Amazon doesn't give a shit
 " autocmd DocStart ^http(s?)://www.amazon.co.uk js tri.excmds.urlmodify("-t", "www", "smile")
+"
+" Disable on some sites
+seturl ^http(s)?://crosshare.org superignore true
+seturl ^http(s)?://www.downforacross.com superignore true
 
 " Isolate Facebook in its own container
 " set auconcreatecontainer true
