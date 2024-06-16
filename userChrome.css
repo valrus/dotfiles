@@ -61,3 +61,9 @@
 #alltabs-button {
   display: none !important;
 }
+
+/* Remove sidebar size restrictions */
+#sidebar-box {
+  max-width: none !important;
+  /* min-width: 0px !important; */
+}
