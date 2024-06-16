@@ -52,7 +52,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (local browser-app-name "Firefox Developer Edition")
-(local mail-app-name "Postbox")
+(local mail-app-name "Thunderbird")
 (local editor-app-name "Emacs")
 (local terminal-app-name "iTerm2")
 (local launcher-app-name "Alfred 5")
@@ -236,7 +236,7 @@
          :action (activator "Slack")}
         {:key :m
          :title "Mail"
-         :action (activator "Postbox")}
+         :action (activator mail-app-name)}
         {:key :d
          :title "Docs"
          :action (activator "Dash")}
@@ -263,7 +263,7 @@
 ;; Media Menu
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(local mpc-command "MPD_HOST=$HOME/.mpd/mpd.socket /usr/local/bin/mpc")
+(local mpc-command "MPD_HOST=$HOME/.mpd/mpd.socket /opt/homebrew/bin/mpc")
 
 (local media-bindings
        [return
