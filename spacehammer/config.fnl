@@ -33,17 +33,18 @@
 
 (local default-browser "org.mozilla.firefoxdeveloperedition")
 (local jira-app "org.epichrome.app.Jira")
+(local chrome-app "com.google.Chrome")
 
 (install:andUse
  "URLDispatcher"
  {:config {:url_patterns
-           [[ "https?://meet.google.com" "com.google.Chrome" ]
-            [ "https?://stream.meet.google.com" "com.google.Chrome" ]
-            [ "https?://drive.google.com" "com.google.Chrome" ]
-            [ "https?://docs.google.com" "com.google.Chrome" ]
-            [ "https?://accounts.google.com" "com.google.Chrome" ]
-            [ "https?://gather.town" "com.google.Chrome" ]
-            [ "https?://meet.jit.si" "com.google.Chrome" ]]
+           [[ "https?://meet.google.com" chrome-app ]
+            [ "https?://stream.meet.google.com" chrome-app ]
+            [ "https?://drive.google.com" chrome-app ]
+            [ "https?://docs.google.com" chrome-app ]
+            [ "https?://accounts.google.com" chrome-app ]
+            [ "https?://gather.town" chrome-app ]
+            [ "https?://meet.jit.si" chrome-app ]]
            :default_handler default-browser}
   :start true})
 
