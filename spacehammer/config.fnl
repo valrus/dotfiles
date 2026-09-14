@@ -20,6 +20,8 @@
 (local {:concat concat
         :logf logf} (require :lib.functional))
 
+(local log (hs.logger.new "config.fnl" "debug"))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; SpoonInstall setup
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -49,13 +51,30 @@
   :start true})
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; PaperWM
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; (set install.repos.PaperWM
+;;      {:url "https://github.com/mogenson/PaperWM.spoon"
+;;       :desc "PaperWM.spoon repository"
+;;       :branch "release"})
+
+;; (install:andUse
+;;  "PaperWM"
+;;  {:repo "PaperWM"
+;;   :config {:screen_margin 16 :window_gap 2}
+;;   :start true})
+
+;; (local paperwm (hs.loadSpoon "PaperWM"))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (local browser-app-name "Firefox Developer Edition")
 (local mail-app-name "Thunderbird")
 (local editor-app-name "Emacs")
-(local terminal-app-name "iTerm2")
+(local terminal-app-name "Ghostty")
 (local launcher-app-name "Alfred 5")
 
 (hs.grid.setGrid "3x2" "1080x1920")
@@ -130,7 +149,7 @@
          :items tab-navigation-items}])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Windows
+;; Windows (grid)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (local window-thirds
@@ -213,6 +232,84 @@
          {:key :u
           :title "Undo"
           :action "windows:undo-action"}]))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Windows (PaperWM)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; (fn enter-window-menu
+;;   [menu]
+;;   "
+;;   Handler that can be used when entering the windows menu
+;;   Takes modal menu table-map
+;;   - Hides any previous display numbers
+;;   - Shows display numbers at top right of each screen
+;;   - Removes previous monitor items if any were added
+;;   - Adds monitor items based on currently connected monitors
+;;   Returns mutated modal menu table-map for threading or chaining
+;;   "
+;;   (let [screens (hs.screen.allScreens)]
+;;     (windows.hide-display-numbers)
+;;     (windows.show-display-numbers screens))
+;;   menu)
+
+;; (local window-bindings
+;;        (concat
+;;         [return
+;;          {:key :n
+;;           :title "Focus Left"
+;;           :action (fn [] (paperwm.actions.focus_left))}
+;;          {:key :e
+;;           :title "Focus Down"
+;;           :action (fn [] (paperwm.actions.focus_down))}
+;;          {:key :i
+;;           :title "Focus Up"
+;;           :action (fn [] (paperwm.actions.focus_up))}
+;;          {:key :o
+;;           :title "Focus Right"
+;;           :action (fn [] (paperwm.actions.focus_right))}
+
+;;          {:key :c
+;;           :title "Center Window"
+;;           :action (fn [] (paperwm.actions.center_window))}
+;;          {:key :f
+;;           :title "Full Width"
+;;           :action (fn [] (paperwm.actions.full_width))}
+;;          {:key :r
+;;           :title "Cycle Width"
+;;           :action (fn [] (paperwm.actions.cycle_width))}
+
+;;          {:key :1
+;;           :title "Space 1"
+;;           :action (fn [] (paperwm.actions.move_window_1))}
+;;          {:key :2
+;;           :title "Window 2"
+;;           :action (fn [] (paperwm.actions.move_window_2))}
+
+;;          {:key :return
+;;           :title "Pull In"
+;;           :action (fn [] (paperwm.actions.slurp_in))}
+;;          {:key :escape
+;;           :title "Push Out"
+;;           :action (fn [] (paperwm.actions.barf_out))}
+
+;;          {:mods [:shift]
+;;           :key :n
+;;           :title "Swap Left"
+;;           :action (fn [] (paperwm.actions.shift_left))}
+;;          {:mods [:shift]
+;;           :key :e
+;;           :title "Swap Down"
+;;           :action (fn [] (paperwm.actions.shift_down))}
+;;          {:mods [:shift]
+;;           :key :i
+;;           :title "Swap Up"
+;;           :action (fn [] (paperwm.actions.shift_up))}
+;;          {:mods [:shift]
+;;           :key :o
+;;           :title "Swap Right"
+;;           :action (fn [] (paperwm.actions.shift_right))}
+;;          ]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Apps Menu
@@ -350,10 +447,10 @@
         {:key   :m
          :title "Media"
          :items media-bindings}
-        {:mods  [:shift]
-         :key   ";"
+        {:key   ";"
          :title "Paletro"
-         :action (fn [] (hs.eventtap.keyStroke [:⌘] :F16))}
+         :action (fn [] (hs.eventtap.keyStroke [:⌘ :⇧ :⌥] "p"))}
+         ;; :action (activator "Paletro")}
         {:key   :h
          :title "Hammerspoon"
          :items hammerspoon-bindings}
