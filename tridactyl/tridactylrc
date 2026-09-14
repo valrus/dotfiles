@@ -163,6 +163,9 @@ autocmd DocStart ^http(s?)://www.reddit.com js tri.excmds.urlmodify("-t", "www",
 " Disable on some sites
 seturl ^http(s)?://crosshare.org superignore true
 seturl ^http(s)?://www.downforacross.com superignore true
+seturl ^http(s)?://www.crosswithfriends.com superignore true
+seturl ^http(s)?://www.thinkygames.com superignore true
+seturl ^http(s)?://(www.)?dailybaffle.com superignore true
 
 " Isolate Facebook in its own container
 " set auconcreatecontainer true
@@ -173,3 +176,16 @@ seturl ^http(s)?://www.downforacross.com superignore true
 
 " The "escape hatch" on <C-,> closes sidebars, which isn't great. Disable that
 set escapehatchsidebarhack false
+
+" colemak
+set keyboardlayoutforce true
+set keyboardlayoutoverrides.KeyN hH
+set keyboardlayoutoverrides.KeyE jJ
+set keyboardlayoutoverrides.KeyI kK
+set keyboardlayoutoverrides.KeyO lL
+set keyboardlayoutoverrides.KeyH iI
+set keyboardlayoutoverrides.KeyJ nN
+set keyboardlayoutoverrides.KeyK eE
+set keyboardlayoutoverrides.KeyL oO
+
+set hintchars arstgmneioqwfpluybjkhzxcdv
